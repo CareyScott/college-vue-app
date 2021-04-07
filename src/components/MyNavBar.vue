@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-07T15:16:31+01:00
+@Last modified time: 2021-04-07T16:56:26+01:00
 -->
 
 
@@ -12,6 +12,7 @@
       <b-nav-item to ="/about">About</b-nav-item>
       <b-nav-item to ="/contact">Contact</b-nav-item>
       <b-nav-item to ="/courses">Courses</b-nav-item>
+      <b-nav-item to ="/login">Login</b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 
