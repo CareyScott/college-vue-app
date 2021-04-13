@@ -1,6 +1,6 @@
 /**
  * @Date:   2021-03-30T22:12:06+01:00
- * @Last modified time: 2021-04-07T18:00:55+01:00
+ * @Last modified time: 2021-04-13T10:48:04+01:00
  */
 import Vue from 'vue'
 
@@ -12,6 +12,7 @@ import Contact from './views/Contact'
 import Login from './views/HomeLogin'
 
 import CoursesIndex from './views/Courses/Index'
+import CoursesShow from './views/Courses/Show'
 // import CoursesShow from './views/Courses/show'
 // import CoursesEdit from './views/Courses/edit'
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/courses',
       name: 'courses_index',
       component: CoursesIndex
+    },
+    {
+      path: '/courses',
+      name: 'courses_show',
+      component: CoursesShow
     },
     // {
     //   path: '/courses/show',
