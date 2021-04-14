@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-07T16:56:26+01:00
+@Last modified time: 2021-04-14T22:29:37+01:00
 -->
 
 
@@ -8,11 +8,18 @@
 <div>
   <b-navbar type="dark" variant="dark">
     <b-navbar-nav>
+      <b-navbar-brand href="#">
+      
+      COLLEGE.
+    </b-navbar-brand>
       <b-nav-item to ="/">Home</b-nav-item>
-      <b-nav-item to ="/about">About</b-nav-item>
-      <b-nav-item to ="/contact">Contact</b-nav-item>
+      <!-- <b-nav-item to ="/about">About</b-nav-item>
+      <b-nav-item to ="/contact">Contact</b-nav-item> -->
       <b-nav-item to ="/courses">Courses</b-nav-item>
+      <b-nav-item to ="/lecturers">Lecturers</b-nav-item>
+      <b-nav-item to ="/enrolments">Enrolements</b-nav-item>
       <b-nav-item to ="/login">Login</b-nav-item>
+      <!-- <b-nav-item to ="/courses/create">Create</b-nav-item> -->
     </b-navbar-nav>
   </b-navbar>
 

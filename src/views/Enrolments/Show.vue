@@ -1,19 +1,19 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T16:23:00+01:00
+@Last modified time: 2021-04-14T23:19:12+01:00
 -->
 
 <template>
-<b-container class="courses">
+<b-container class="enrolments">
   <notifications group="foo" />
   <b-row>
     <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class="text-center mb-4 mt-5">
         <div class="parallax shadow-sm mb-4"></div>
 
-        <h1 class="display-5 fw-bold mb-4">{{course.title}}</h1>
-        <strong class="lead mb-4">{{course.description}}</strong>
-        {{course.enrolements}}
+        <h1 class="display-5 fw-bold mb-4">{{enrolment.title}}</h1>
+        <strong class="lead mb-4">{{enrolment.description}}</strong>
+        <strong class="lead mb-4">{{enrolements.name}}</strong>
       </b-col>
     </div>
 
@@ -22,45 +22,52 @@
   <b-row>
     <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class=" p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-primary">Course Details</strong>
+        <strong class="d-inline-block mb-2 text-primary">Enrolment Details</strong>
         <b-row>
           <div class="col mb-3">
-            <h4 class="card-text mb-auto">Points Required:</h4>
-            <h4 class="card-text mb-auto">Course Level: </h4>
-            <h4 class="card-text mb-auto">Course Code: </h4>
+            <h4 class="card-text mb-auto mt-3">Date:</h4>
+            <h4 class="card-text mb-auto mt-3">Time:</h4>
+            <h4 class="card-text mb-auto mt-3">Status:</h4>
+            <h4 class="card-text mb-auto mt-3">Course:</h4>
+            <h4 class="card-text mb-auto mt-3">Lecturer:</h4>
           </div>
           <div class="col text-info">
-            <h4 class="card-text mb-auto"> {{course.points}}</h4>
-            <h4 class="card-text mb-auto">{{course.level}}</h4>
-            <h4 class="card-text mb-auto">{{course.code}}</h4>
+            <h4 class="card-text mb-auto mt-3"> {{enrolment.date}}</h4>
+            <h4 class="card-text mb-auto mt-3">{{enrolment.time}}</h4>
+            <h4 class="card-text mb-auto mt-3">{{enrolment.status}}</h4>
+            <h4 class="card-text mb-auto mt-3">{{enrolment.course_id}}</h4>
+            <h4 class="card-text mb-auto mt-3">{{enrolment.lecturer_id}}</h4>
           </div>
         </b-row>
       </b-col>
     </div>
+  
 
-    <div class="col-6 mx-auto">
-      <router-link class="btn btn-info ml-5 float-right" :to="{name: 'courses_edit', params: {id:course.id, title:course.title , code:course.code , level:course.level, points:course.points} }">
-        Edit Course
-      </router-link>
-      <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Course</b-button>
-      <b-modal id="delete-modal" hide-footer>
-        <template #modal-title>
-          Are you sure?
-        </template>
-        <div class="d-block text-center">
-          <h4>Do you want to delete this course?</h4>
-        </div>
-        <b-col>
-          <b-button class="mt-3 btn btn-gray" block @click="$bvModal.hide('delete-modal')">Cancel</b-button>
-        </b-col>
-        <b-col>
-          <b-button class="mt-3 btn btn-danger" block @click="deleteCourse()">Delete</b-button>
-        </b-col>
 
-      </b-modal>
-
-    </div>
   </b-row>
+
+  <div class="col-6 mx-auto">
+    <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
+      Edit Enrolment
+    </router-link>
+    <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Enrolment</b-button>
+    <b-modal id="delete-modal" hide-footer>
+      <template #modal-title>
+        Are you sure?
+      </template>
+      <div class="d-block text-center">
+        <h4>Do you want to delete this enrolment?</h4>
+      </div>
+      <b-col>
+        <b-button class="mt-3 btn btn-gray" block @click="$bvModal.hide('delete-modal')">Cancel</b-button>
+      </b-col>
+      <b-col>
+        <b-button class="mt-3 btn btn-danger" block @click="deleteEnrolment()">Delete</b-button>
+      </b-col>
+
+    </b-modal>
+
+  </div>
 </b-container>
 </template>
 <style>
@@ -106,13 +113,11 @@ import axios from 'axios';
 // const COURSE_ID = $route.params.id;
 
 export default {
-  name: 'CoursesShow',
+  name: 'EnrolmentsShow',
   components: {},
   data() {
     return {
-      course: [{
-        enrolement:[]
-      }]
+      enrolment: []
     }
   },
   mounted() {
@@ -120,21 +125,21 @@ export default {
 
 
     let token = localStorage.getItem('token');
-    axios.get('https://college-api-scott.herokuapp.com/api/courses/' + this.$route.params.id, {
+    axios.get('https://college-api-scott.herokuapp.com/api/enrolments/' + this.$route.params.id, {
         headers: {
           Authorization: "Bearer " + token
         }
       })
       .then(response => {
         console.log(response.data);
-        this.course = response.data.data;
-        this.enrolement = response.data.data;
-        // this.$router.replace({name:'courses_index'});
+        this.enrolment = response.data.data;
+        this.enrolements = response.data.data;
+        // this.$router.replace({name:'enrolments_index'});
 
         this.$notify({
           group: 'foo',
           title: 'Important message',
-          text: 'Course Loaded'
+          text: 'Enrolment Loaded'
         });
       })
       .catch(error => {
@@ -156,7 +161,7 @@ export default {
         })
         .then(response => {
           console.log(response.data);
-          // this.$router.replace({name:'courses_index'});
+          // this.$router.replace({name:'enrolments_index'});
 
         })
         .catch(error => {
@@ -166,19 +171,19 @@ export default {
 
       localStorage.removeItem('token');
     },
-    deleteCourse() {
+    deleteEnrolment() {
 
       let token = localStorage.getItem('token');
-      axios.delete('https://college-api-scott.herokuapp.com/api/courses/' + this.$route.params.id, {
+      axios.delete('https://college-api-scott.herokuapp.com/api/enrolments/' + this.$route.params.id, {
           headers: {
             Authorization: "Bearer " + token
           }
         })
         .then(response => {
           console.log(response.data);
-          // this.$router.replace({name:'courses_index'});
+          // this.$router.replace({name:'enrolments_index'});
           this.$router.push({
-            name: 'courses_index'
+            name: 'enrolments_index'
           });
         })
         .catch(error => {
