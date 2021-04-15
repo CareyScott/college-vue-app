@@ -1,11 +1,11 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T16:23:00+01:00
+@Last modified time: 2021-04-15T19:37:46+01:00
 -->
 
 <template>
 <b-container class="courses">
-  <notifications group="foo" />
+
   <b-row>
     <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class="text-center mb-4 mt-5">
@@ -37,6 +37,9 @@
         </b-row>
       </b-col>
     </div>
+
+    <b-button class="mt-3 btn btn-success mb-5" block @click="showPopup()">Replay Popup</b-button>
+
 
     <div class="col-6 mx-auto">
       <router-link class="btn btn-info ml-5 float-right" :to="{name: 'courses_edit', params: {id:course.id, title:course.title , code:course.code , level:course.level, points:course.points} }">
@@ -86,17 +89,6 @@
   /* The image used */
   background-image: url("https://images.unsplash.com/photo-1562774053-701939374585?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1064&q=80") !important;
 
-  /* Set a specific height */
-  height: 100%;
-  width: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-
 }
 </style>
 <script>
@@ -134,7 +126,9 @@ export default {
         this.$notify({
           group: 'foo',
           title: 'Important message',
-          text: 'Course Loaded'
+          text: 'Course Loaded',
+          type: 'success',
+          speed: 1000
         });
       })
       .catch(error => {
@@ -185,6 +179,19 @@ export default {
           console.log(error)
           console.log(error.response.data)
         })
+
+    },
+    showPopup() {
+
+
+
+      this.$notify({
+        group: 'foo',
+        title: 'Important message',
+        text: 'Course Loaded',
+        type: 'success',
+        speed: 1000
+      });
 
     },
 

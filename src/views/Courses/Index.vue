@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T16:30:12+01:00
+@Last modified time: 2021-04-15T20:19:51+01:00
 -->
 
 <template>
@@ -9,9 +9,9 @@
     <h2>Courses</h2>
       <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link>
   </b-col>
-  <b-col >
+  <!-- <b-col >
     <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button>
-  </b-col>
+  </b-col> -->
 
   <b-card-group columns>
       <b-card v-for="course in courses" :key="course.id">
@@ -94,25 +94,25 @@ export default {
  },
 
 
-
- logout() {
-
-   let token = localStorage.getItem('token');
-   axios.get('https://college-api-scott.herokuapp.com/api/courses',{
-     headers: {Authorization: "Bearer " + token}
-   })
-   .then(response => {
-     console.log(response.data);
-     // this.$router.replace({name:'courses_index'});
-   })
-   .catch(error => {
-     console.log(error)
-     console.log(error.response.data)
-   })
-
-   localStorage.removeItem('token');
-   this.$router.replace({name:'home'});
- },
+ //
+ // logout() {
+ //
+ //   let token = localStorage.getItem('token');
+ //   axios.get('https://college-api-scott.herokuapp.com/api/courses',{
+ //     headers: {Authorization: "Bearer " + token}
+ //   })
+ //   .then(response => {
+ //     console.log(response.data);
+ //     // this.$router.replace({name:'courses_index'});
+ //   })
+ //   .catch(error => {
+ //     console.log(error)
+ //     console.log(error.response.data)
+ //   })
+ //
+ //   localStorage.removeItem('token');
+ //   this.$router.replace({name:'home'});
+ // },
 
  searchCourses(){
    let token = localStorage.getItem('token');

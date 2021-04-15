@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-14T23:17:23+01:00
+@Last modified time: 2021-04-15T12:40:23+01:00
 -->
 
 
@@ -53,16 +53,18 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        address: "",
-        email: "",
-        phone: "",
+        date: "",
+        time: "",
+        status: "",
+        course_id: "",
+        lecturer_id: "",
       },
 
       errors: {}
     }
   },
   mounted() {
+
 
   },
   methods: {
@@ -71,10 +73,11 @@ export default {
 
 
       axios.post('https://college-api-scott.herokuapp.com/api/enrolments', {
-          name: this.form.name,
-          address: this.form.address,
-          email: this.form.email,
-          phone: this.form.phone,
+          date: this.form.date,
+          time: this.form.time,
+          status: this.form.status,
+          course_id: this.form.course_id,
+          lecturer_id: this.form.lecturer_id,
 
         }, {
           headers: {

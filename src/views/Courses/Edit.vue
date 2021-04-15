@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-14T16:14:57+01:00
+@Last modified time: 2021-04-15T12:21:50+01:00
 -->
 
 
@@ -40,6 +40,7 @@
         <label for="formGroupExampleInput">Level</label>
         <b-form-input type="text" v-model="form.level" class="form-control" placeholder="Level"></b-form-input>
       </b-form-group>
+      
     </div>
 
     <button class="btn btn-primary" @click="editCourse()">Submit</button>

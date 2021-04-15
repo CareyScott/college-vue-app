@@ -1,11 +1,11 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T16:14:38+01:00
+@Last modified time: 2021-04-15T11:41:25+01:00
 -->
 
 <template>
 <b-container class="lecturers">
-  <notifications group="foo" />
+
   <b-row>
     <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class="text-center mb-4 mt-5">
