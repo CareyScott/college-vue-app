@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:01:55+01:00
-@Last modified time: 2021-04-15T20:42:54+01:00
+@Last modified time: 2021-04-17T00:14:34+01:00
 -->
 
 
@@ -10,7 +10,9 @@
   <MyNavBar :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut" />
   <b-container>
 
-    <notifications group="foo" />
+    <notifications group="foo" animation-type="velocity"  position="bottom right" />
+    <notifications group="auth" animation-type="velocity"  position="bottom right" />
+
 
 
     <vue-page-transition name="fade-in-up">
@@ -24,6 +26,7 @@
 </template>
 
 <script>
+
 import MyNavBar from './components/MyNavBar.vue'
 
 export default {

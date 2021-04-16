@@ -1,17 +1,27 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T23:17:06+01:00
+@Last modified time: 2021-04-16T22:02:20+01:00
 -->
 
 <template>
 <b-row class="enrolments">
+
   <b-col>
-    <h2>Enrolments</h2>
-      <router-link class="  btn btn-primary" :to="{ name: 'enrolments_create'}">Create</router-link>
+    <!-- <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link> -->
+    <b-card bg-variant="dark" class="mt-4 mb-4" text-variant="white" title="Enrolments">
+      <b-card-text>
+        Listed are all of the current Enrolments at COLLEGE.
+      </b-card-text>
+      <b-card-text>
+        Click below to create a new Enrolment.
+      </b-card-text>
+      <router-link class="btn-primary btn" :to="{ name: 'enrolments_create'}">Create</router-link>
+
+
+    </b-card>
   </b-col>
-  <b-col >
-    <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button>
-  </b-col>
+    <!-- <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button> -->
+
 
   <b-card-group columns>
       <b-card v-for="enrolment in enrolments" :key="enrolment.id">

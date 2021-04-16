@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-15T20:34:12+01:00
+@Last modified time: 2021-04-17T00:07:27+01:00
 -->
 
 <template>
@@ -50,7 +50,9 @@ export default {
         })
         .catch(error => {
           console.log(error)
+          this.$notify({ group: 'auth',type: 'warn',  text: 'Wrong password, please try again later' })
           console.log(error.response)
+
         })
     }
   },

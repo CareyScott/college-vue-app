@@ -1,18 +1,24 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T16:26:32+01:00
+@Last modified time: 2021-04-16T22:03:03+01:00
 -->
 
 <template>
 <b-row class="lecturers">
   <b-col>
-    <h2>Lecturers</h2>
-      <router-link class="  btn btn-primary" :to="{ name: 'lecturers_create'}">Create</router-link>
-  </b-col>
-  <b-col >
-    <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button>
-  </b-col>
+    <!-- <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link> -->
+    <b-card bg-variant="dark" class="mt-4 mb-4" text-variant="white" title="Lecturers">
+      <b-card-text>
+        Listed are all of the current Lecturers at COLLEGE.
+      </b-card-text>
+      <b-card-text>
+        Click below to create a new Lecturer.
+      </b-card-text>
+      <router-link class="btn-primary btn" :to="{ name: 'lecturers_create'}">Create</router-link>
 
+
+    </b-card>
+  </b-col>
   <b-card-group columns>
       <b-card v-for="lecturer in lecturers" :key="lecturer.id">
             <router-link

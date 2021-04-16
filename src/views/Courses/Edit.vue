@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-15T12:21:50+01:00
+@Last modified time: 2021-04-16T16:44:36+01:00
 -->
 
 
@@ -8,42 +8,90 @@
 <template>
 <b-container class="courses mt-5">
 
-  <b-row>
-    <div>
-      <h1>Edit Course</h1>
-    </div>
-  </b-row>
+  <b-card
+  overlay
+  img-src="https://picsum.photos/900/250/?image=3"
+  img-alt="Card Image"
+  text-variant="white"
+  title="Create Course"
+  sub-title="New"
+
+  >
+  <b-card-text>
+    Enter course details into the form below. Make sure all of the information is correct before submitting.
+  </b-card-text>
+  </b-card>
   <!-- title: <input type="text" v-model="form.title" /> <br>
     code: <input type="text" v-model="form.code" /> <span v-if="errors.code"> {{ errors.code }} </span><br>
     description: <input type="text" v-model="form.description" /> <br>
     points: <input type="text" v-model="form.points" /> <span v-if="errors.points"> {{ errors.points }} </span><br>
     level: <input type="text" v-model="form.level" /> <span v-if="errors.level"> {{ errors.level }} </span><br> -->
 
-    <div class="mt-5">
-      <b-form-group>
-        <label for="formGroupExampleInput">Title</label>
-        <b-form-input type="text" v-model="form.title" class="form-control" placeholder="Title"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <label for="formGroupExampleInput2">Code</label>
-        <b-form-input type="text" v-model="form.code" class="form-control" placeholder="Code"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <label for="formGroupExampleInput">Description</label>
-        <b-form-input type="text" v-model="form.description" class="form-control" placeholder="Description"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <label for="formGroupExampleInput">points</label>
-        <b-form-input type="text" v-model="form.points" class="form-control" placeholder="Points"></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <label for="formGroupExampleInput">Level</label>
-        <b-form-input type="text" v-model="form.level" class="form-control" placeholder="Level"></b-form-input>
-      </b-form-group>
-      
-    </div>
+    <div class="mt-5 card p-3">
 
-    <button class="btn btn-primary" @click="editCourse()">Submit</button>
+
+
+    <b-row>
+      <b-col>
+        <b-col>
+          <b-form-group>
+            <label for="formGroupExampleInput">Title:</label>
+            <b-form-input type="text" v-model="form.title" class="form-control" placeholder="Enter title..."></b-form-input>
+          </b-form-group>
+
+        </b-col>
+        <b-col>
+          <b-form-group>
+            <label for="formGroupExampleInput2">Code:</label>
+            <b-form-input type="text" v-model="form.code" class="form-control" placeholder="Enter course code..."></b-form-input>
+          </b-form-group>
+        </b-col>
+
+        <b-col>
+          <b-form-group>
+            <label for="formGroupExampleInput">Points:</label>
+            <b-form-input type="range" v-model="form.points" min="100" max="625" class="form-control col" placeholder="Enter points..."></b-form-input>
+            {{ form.points }}
+            <!-- <b-form-input :id="range" type="range" v-model="form.points"  min="100" max="625" class="form-control col" placeholder="Points"></b-form-input> -->
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group>
+            <label for="formGroupExampleInput">Level:</label>
+            <br>
+            <!-- <b-form-input type="text" v-model="form.level" class="form-control col" placeholder="Level"></b-form-input> -->
+            <b-form-checkbox-group v-model="form.level" :options="levelOptions" name="level" buttons></b-form-checkbox-group>
+          </b-form-group>
+        </b-col>
+        <b-col>
+
+          <button class="btn btn-primary" @click="editCourse()">Submit</button>
+
+        </b-col>
+      </b-col>
+      <b-col>
+
+        <b-col>
+          <b-form-group>
+            <label for="formGroupExampleInput">Course Description</label>
+            <b-form-textarea type="text" v-model="form.description" class="form-control" placeholder="Enter description..." rows="5"></b-form-textarea>
+          </b-form-group>
+        </b-col>
+
+      </b-col>
+
+    </b-row>
+
+    <b-row>
+      <b-col>
+
+      </b-col>
+    </b-row>
+
+
+  </div>
+
+
 
 
 
@@ -58,6 +106,25 @@ export default {
   components: {},
   data() {
     return {
+      levelOptions: [
+
+        {
+          text: '7',
+          value: '7'
+        },
+        {
+          text: '8',
+          value: '8'
+        },
+        {
+          text: '9',
+          value: '9'
+        },
+        {
+          text: '10',
+          value: '10'
+        }
+      ],
       form: {
         title: "",
         code: "",
