@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T18:36:12+01:00
+@Last modified time: 2021-04-17T20:54:18+01:00
 -->
 
 <template>
@@ -89,17 +89,44 @@
         </b-row>
       </b-col>
     </div>
+    <div class=" col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <b-col class=" p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Course Details</strong>
+        <b-row>
+          <div class="col mb-3">
+            <h5 class="card-text mb-auto mt-3">Course Title:</h5>
+            <h5 class="card-text mb-auto mt-3">Description:</h5>
+            <h5 class="card-text mb-auto mt-3">Course Code:</h5>
+          </div>
+          <div class="col text-info">
+            <h5 class="card-text mb-auto mt-3"> {{enrolment.course.title}}</h5>
+            <h5 class="card-text mb-auto mt-3">{{enrolment.course.description}}</h5>
+            <h5 class="card-text mb-auto mt-3">{{enrolment.course.code}}</h5>
+          </div>
+        </b-row>
+      </b-col>
+    </div>
   </b-row>
 
 
 
   <!-- </b-row> -->
+  <b-row class="mb-4">
+    <b-col class="col-8"></b-col>
+    <b-col class="col-2">
+      <router-link class="btn btn-info float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
+        Edit Enrolment
+      </router-link>
+    </b-col>
+    <b-col class="col-2">
+      <b-button class="btn-danger btn" id="show-btn" @click="$bvModal.show('delete-modal')">Delete Enrolment</b-button>
+    </b-col>
+  </b-row>
 
-  <div class="col-6 mx-auto">
-    <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
+    <!-- <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
       Edit Enrolment
     </router-link>
-    <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Enrolment</b-button>
+    <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Enrolment</b-button> -->
     <b-modal id="delete-modal" hide-footer>
       <template #modal-title>
         Are you sure?
@@ -116,7 +143,7 @@
 
     </b-modal>
 
-  </div>
+
 </b-container>
 </template>
 <style>
