@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-17T00:15:55+01:00
+@Last modified time: 2021-04-17T20:47:16+01:00
 -->
 
 
@@ -30,11 +30,11 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-form>
+        <!-- <b-nav-form>
           <b-form-input size="sm" class="mr-sm-2" placeholder="Search"  v-model="term"></b-form-input>
 
           <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form>
+        </b-nav-form> -->
 
         <!-- <b-nav-item-dropdown text="Lang" right>
           <b-dropdown-item href="#">EN</b-dropdown-item>
@@ -49,15 +49,18 @@
           User
           </template>
           <div v-if="loggedIn">
+            <b-dropdown-item lass="float-right" variant="danger" @click="logout()">
+             Logout
+          </b-dropdown-item>
+
+          </div>
+          <div v-else>
             <b-dropdown-item href="#">
               <router-link class="btn  ml-1" :to="{name: 'home'}">Login</router-link>
             </b-dropdown-item>
             <b-dropdown-item href="#">
               <router-link class="btn  ml-1" :to="{name: 'register'}">Register</router-link>
             </b-dropdown-item>
-          </div>
-          <div v-else>
-            <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button>
           </div>
 
 

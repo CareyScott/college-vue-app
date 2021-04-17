@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-16T23:56:01+01:00
+@Last modified time: 2021-04-17T20:38:36+01:00
 -->
 
 <template>
@@ -122,7 +122,7 @@ export default {
 
     searchUnsplash() {
       this.images = [];
-      axios.get(`https://api.unsplash.com/search/photos?query=photography&per_page=1
+      axios.get(`https://api.unsplash.com/search/photos?query=college&per_page=1
       `, {
           headers: {
             Authorization: "Client-ID 99s9eFcJIH_mgs5cHe7nCvdAk2z9wkf5uXxkbo9S83k",

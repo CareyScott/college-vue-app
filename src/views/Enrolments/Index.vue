@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-16T22:02:20+01:00
+@Last modified time: 2021-04-17T20:22:31+01:00
 -->
 
 <template>
@@ -27,10 +27,11 @@
       <b-card v-for="enrolment in enrolments" :key="enrolment.id">
             <router-link
             :to="{name: 'enrolments_show', params: {id:enrolment.id, date:enrolment.date , time:enrolment.time , status:enrolment.status, course_id:enrolment.course_id, lecturer_id:enrolment.lecturer_id} }">
-            <img class="card-img-top" src="https://images.unsplash.com/photo-1478104718532-efe04cc3ff7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80" alt="Card image cap">
+            <!-- <img class="card-img-top" src="https://images.unsplash.com/photo-1478104718532-efe04cc3ff7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80" alt="Card image cap"> -->
 
-            {{enrolment.status}}
-
+            <p class="card-text ">{{enrolment.course.title}}</p>
+            <p class="card-text ">{{enrolment.lecturer.name}}</p>
+            <p class="card-text ">{{enrolment.status}}</p>
           </router-link>
       </b-card>
   </b-card-group>

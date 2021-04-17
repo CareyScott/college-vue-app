@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-15T20:29:42+01:00
+@Last modified time: 2021-04-17T20:47:49+01:00
 -->
 
 
@@ -13,8 +13,8 @@
       <h1 class=" text-center">COLLEGE.</h1>
       <h1 class="h1 text-center ">Login</h1>
 
-      <h1 v-if="loggedIn">You are logged in</h1>
-      <h1 v-else>Not logged in</h1>
+      <!-- <h1 v-if="loggedIn">You are logged in</h1>
+      <h1 v-else>Not logged in</h1> -->
     </b-card>
   </b-row>
 

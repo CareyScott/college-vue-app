@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T00:03:55+01:00
+@Last modified time: 2021-04-17T19:38:57+01:00
 -->
 
 <template>
@@ -9,43 +9,74 @@
   <b-row>
     <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class="text-center mb-4 mt-5">
-        <div class="parallax shadow-sm mb-4"></div>
+        <!-- <div class="parallax shadow-sm mb-4"></div> -->
 
-        <h1 class="display-5 fw-bold mb-4">{{course.title}}</h1>
-        <strong class="lead mb-4">{{course.description}}</strong>
-        {{course.enrolements}}
+        <b-card overlay img-src="https://picsum.photos/900/250/?image=5" img-alt="Card Image" text-variant="white" title="Course">
+          <b-card-text>
+            <h1 class="display-5 fw-bold mb-4 text-capitalize">{{course.title}}</h1>
+            <!-- <strong class="lead mb-4">{{enrolment.description}}</strong> -->
+            <!-- <strong class="lead mb-4">{{enrolement.course}}</strong> -->
+          </b-card-text>
+        </b-card>
+
+
       </b-col>
     </div>
 
   </b-row>
-
   <b-row>
-    <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <b-col class=" p-4 d-flex flex-column position-static">
+
+    <div class="  mx-auto col-6 g-0 border rounded overflow-hidden  mb-4 shadow-sm">
+      <b-col class=" p-4 flex-column">
         <strong class="d-inline-block mb-2 text-primary">Course Details</strong>
         <b-row>
           <div class="col mb-3">
-            <h4 class="card-text mb-auto">Points Required:</h4>
-            <h4 class="card-text mb-auto">Course Level: </h4>
-            <h4 class="card-text mb-auto">Course Code: </h4>
+            <h5 class="card-text mb-auto">Points Required:</h5>
+            <h5 class="card-text mb-auto">Course Level: </h5>
+            <h5 class="card-text mb-auto">Course Code: </h5>
           </div>
           <div class="col text-info">
-            <h4 class="card-text mb-auto"> {{course.points}}</h4>
-            <h4 class="card-text mb-auto">{{course.level}}</h4>
-            <h4 class="card-text mb-auto">{{course.code}}</h4>
+            <h5 class="card-text mb-auto"> {{course.points}}</h5>
+            <h5 class="card-text mb-auto">{{course.level}}</h5>
+            <h5 class="card-text mb-auto">{{course.code}}</h5>
           </div>
         </b-row>
       </b-col>
     </div>
+    <div class=" mx-auto col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <b-col class=" p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Course Enrolments</strong>
+        <b-row>
+          <!-- <div class="col mb-3">
+            <h5 class="card-text mb-auto">Points Required:</h5>
+            <h5 class="card-text mb-auto">Course Level: </h5>
+            <h5 class="card-text mb-auto">Course Code: </h5>
+          </div>
+          <div class="col text-info">
+            <h5 class="card-text mb-auto"> {{course.points}}</h5>
+            <h5 class="card-text mb-auto">{{course.level}}</h5>
+            <h5 class="card-text mb-auto">{{course.code}}</h5>
+          </div> -->
 
-    <b-button class="mt-3 btn btn-success mb-5" block @click="showPopup()">Replay Popup</b-button>
+          <b-table class="text-center" striped hover :items="course.enrolments" :fields="fields">
+          </b-table>
+        </b-row>
+      </b-col>
+    </div>
+  </b-row>
 
 
-    <div class="col-6 mx-auto">
-      <router-link class="btn btn-info ml-5 float-right" :to="{name: 'courses_edit', params: {id:course.id, title:course.title , code:course.code , level:course.level, points:course.points} }">
+    <!-- <b-button class="mt-3 btn btn-success mb-5" block @click="showPopup()">Replay Popup</b-button> -->
+
+
+
+      <!-- <router-link class="btn btn-info ml-5 float-right" :to="{name: 'courses_edit', params: {id:course.id, title:course.title , code:course.code , level:course.level, points:course.points} }">
         Edit Course
       </router-link>
-      <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Course</b-button>
+      <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Course</b-button> -->
+
+
+
       <b-modal id="delete-modal" hide-footer>
         <template #modal-title>
           Are you sure?
@@ -84,8 +115,18 @@
 
       </b-modal>
 
-    </div>
-  </b-row>
+
+   <b-row class="mb-4">
+     <b-col class="col-8"></b-col>
+     <b-col class="col-2">
+       <router-link class="btn btn-info ml-5 float-right" :to="{name: 'courses_edit', params: {id:course.id, title:course.title , code:course.code , level:course.level, points:course.points} }">
+         Edit Course
+       </router-link>
+     </b-col>
+     <b-col class="col-2">
+       <b-button class="btn-danger btn" id="show-btn" @click="$bvModal.show('delete-modal')">Delete Course</b-button>
+     </b-col>
+   </b-row>
 </b-container>
 </template>
 <style>
@@ -174,7 +215,8 @@ export default {
       .then(response => {
         console.log(response.data);
         this.course = response.data.data;
-        this.enrolement = response.data.data;
+        this.enrolements = response.data.data;
+        // this.lecturer = response.data.data;
         // this.$router.replace({name:'courses_index'});
 
         this.$notify({
@@ -198,29 +240,41 @@ export default {
   },
   methods: {
 
-    logout() {
-
-      let token = localStorage.getItem('token');
-      axios.get('https://college-api-scott.herokuapp.com/api/logout', {
-          headers: {
-            Authorization: "Bearer " + token
-          }
-        })
-        .then(response => {
-          console.log(response.data);
-          // this.$router.replace({name:'courses_index'});
-
-        })
-        .catch(error => {
-          console.log(error)
-          console.log(error.response.data)
-        })
-
-      localStorage.removeItem('token');
-    },
+    // logout() {
+    //
+    //   let token = localStorage.getItem('token');
+    //   axios.get('https://college-api-scott.herokuapp.com/api/logout', {
+    //       headers: {
+    //         Authorization: "Bearer " + token
+    //       }
+    //     })
+    //     .then(response => {
+    //       console.log(response.data);
+    //       // this.$router.replace({name:'courses_index'});
+    //
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //       console.log(error.response.data)
+    //     })
+    //
+    //   localStorage.removeItem('token');
+    // },
     deleteCourse() {
 
       let token = localStorage.getItem('token');
+
+      this.course.enrolments.forEach((enrolment) => {
+        axios.delete('https://college-api-scott.herokuapp.com/api/enrolments/' + enrolment.id, {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      });
+
       axios.delete('https://college-api-scott.herokuapp.com/api/courses/' + this.$route.params.id, {
           headers: {
             Authorization: "Bearer " + token

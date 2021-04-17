@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-16T23:49:49+01:00
+@Last modified time: 2021-04-17T18:59:40+01:00
 -->
 
 
@@ -40,7 +40,7 @@
     img-alt="Card Image"
     text-variant="white"
     title="Edit Lecturer"
-    sub-title="New"
+    sub-title="Edit"
 
     >
     <b-card-text>
@@ -48,22 +48,22 @@
     </b-card-text>
     </b-card>
 
-    <div class="mt-3">
+    <div class="mt-3 col-6">
       <b-form-group>
-        <label for="formGroupExampleInput">Name</label>
-        <b-form-input type="text" v-model="form.name" class="form-control" placeholder="Name"></b-form-input><span v-if="errors.name"> {{ errors.name }} </span>
+        <label class="font-weight-bold" for="formGroupExampleInput">Name</label>
+        <b-form-input type="text" v-model="form.name" class="form-control" placeholder="Enter Name..."></b-form-input><span v-if="errors.name"> {{ errors.name }} </span>
       </b-form-group>
       <b-form-group>
-        <label for="formGroupExampleInput2">Address</label>
-        <b-form-input type="text" v-model="form.address" class="form-control" placeholder="Address"></b-form-input><span v-if="errors.address"> {{ errors.address }} </span>
+        <label class="font-weight-bold" for="formGroupExampleInput2">Address</label>
+        <b-form-input type="text" v-model="form.address" class="form-control" placeholder="Enter Address..."></b-form-input><span v-if="errors.address"> {{ errors.address }} </span>
       </b-form-group>
       <b-form-group>
-        <label for="formGroupExampleInput">Email</label>
-        <b-form-input type="text" v-model="form.email" class="form-control" placeholder="Email"></b-form-input><span v-if="errors.email"> {{ errors.email }} </span>
+        <label class="font-weight-bold" for="formGroupExampleInput">Email</label>
+        <b-form-input type="text" v-model="form.email" class="form-control" placeholder="Enter Email..."></b-form-input><span v-if="errors.email"> {{ errors.email }} </span>
       </b-form-group>
       <b-form-group>
-        <label for="formGroupExampleInput">Phone</label>
-        <vue-tel-input type="text" v-model="form.phone" class="form-control" Number placeholder="Phone"></vue-tel-input><span v-if="errors.phone"> {{ errors.phone }} </span>
+        <label class="font-weight-bold" for="formGroupExampleInput">Phone</label>
+        <vue-tel-input type="text" v-model="form.phone" class="form-control" Number placeholder="Enter Phone"></vue-tel-input><span v-if="errors.phone"> {{ errors.phone }} </span>
       </b-form-group>
 
     </div>

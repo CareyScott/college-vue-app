@@ -1,6 +1,6 @@
 /**
  * @Date:   2021-03-30T22:01:55+01:00
- * @Last modified time: 2021-04-16T23:46:48+01:00
+ * @Last modified time: 2021-04-17T18:09:14+01:00
  */
 
 
@@ -44,9 +44,9 @@ import VueTelInput from 'vue-tel-input'
 import 'vue-tel-input/dist/vue-tel-input.css'
 
 
-// //import moment
-// var moment = require('moment'); // require
-// moment().format();
+//import moment
+var moment = require('moment'); // require
+moment().format();
 
 Vue.use(LayoutPlugin)
 Vue.use(BootstrapVue)

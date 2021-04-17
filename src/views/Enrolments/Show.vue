@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-14T23:19:12+01:00
+@Last modified time: 2021-04-17T18:36:12+01:00
 -->
 
 <template>
@@ -9,16 +9,22 @@
   <b-row>
     <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class="text-center mb-4 mt-5">
-        <div class="parallax shadow-sm mb-4"></div>
+        <!-- <div class="parallax shadow-sm mb-4"></div> -->
 
-        <h1 class="display-5 fw-bold mb-4">{{enrolment.title}}</h1>
-        <strong class="lead mb-4">{{enrolment.description}}</strong>
-        <strong class="lead mb-4">{{enrolements.name}}</strong>
+        <b-card overlay img-src="https://picsum.photos/900/250/?image=5" img-alt="Card Image" text-variant="white" title="Enrolment">
+          <b-card-text>
+            <h1 class="display-5 fw-bold mb-4 text-capitalize">{{enrolment.status}}</h1>
+            <!-- <strong class="lead mb-4">{{enrolment.description}}</strong> -->
+            <!-- <strong class="lead mb-4">{{enrolement.course}}</strong> -->
+          </b-card-text>
+        </b-card>
+
+
       </b-col>
     </div>
 
   </b-row>
-
+  <!--
   <b-row>
     <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class=" p-4 d-flex flex-column position-static">
@@ -32,19 +38,62 @@
             <h4 class="card-text mb-auto mt-3">Lecturer:</h4>
           </div>
           <div class="col text-info">
-            <h4 class="card-text mb-auto mt-3"> {{enrolment.date}}</h4>
-            <h4 class="card-text mb-auto mt-3">{{enrolment.time}}</h4>
-            <h4 class="card-text mb-auto mt-3">{{enrolment.status}}</h4>
-            <h4 class="card-text mb-auto mt-3">{{enrolment.course_id}}</h4>
-            <h4 class="card-text mb-auto mt-3">{{enrolment.lecturer_id}}</h4>
+            <h4 class="card-text mb-auto mt-3 text-capitalize"> {{enrolment.date}}</h4>
+            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.time}}</h4>
+            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.status}}</h4>
+            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.course.title}}</h4>
+            <h4 class="card-text mb-auto mt-3 text-capitalize" >{{enrolment.lecturer.name}}</h4>
+          </div>
+        </b-row>
+      </b-col>
+    </div> -->
+
+
+
+  <b-row>
+    <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <b-col class=" p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Enrolment Details</strong>
+        <b-row>
+          <div class="col mb-3">
+            <h5 class="card-text mb-auto mt-3">Date:</h5>
+            <h5 class="card-text mb-auto mt-3">Time:</h5>
+            <h5 class="card-text mb-auto mt-3">Status:</h5>
+            <h5 class="card-text mb-auto mt-3">Course:</h5>
+            <h5 class="card-text mb-auto mt-3">Lecturer:</h5>
+          </div>
+          <div class="col text-info">
+            <h5 class="card-text mb-auto mt-3 text-capitalize"> {{enrolment.date}}</h5>
+            <h5 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.time}}</h5>
+            <h5 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.status}}</h5>
+            <h5 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.course.title}}</h5>
+            <h5 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.lecturer.name}}</h5>
           </div>
         </b-row>
       </b-col>
     </div>
-  
-
-
+    <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <b-col class=" p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Lecturer Details</strong>
+        <b-row>
+          <div class="col mb-3">
+            <h5 class="card-text mb-auto mt-3">Address:</h5>
+            <h5 class="card-text mb-auto mt-3">Email:</h5>
+            <h5 class="card-text mb-auto mt-3">Phone:</h5>
+          </div>
+          <div class="col text-info">
+            <h5 class="card-text mb-auto mt-3"> {{enrolment.lecturer.address}}</h5>
+            <h5 class="card-text mb-auto mt-3">{{enrolment.lecturer.email}}</h5>
+            <h5 class="card-text mb-auto mt-3">{{enrolment.lecturer.phone}}</h5>
+          </div>
+        </b-row>
+      </b-col>
+    </div>
   </b-row>
+
+
+
+  <!-- </b-row> -->
 
   <div class="col-6 mx-auto">
     <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
