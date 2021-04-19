@@ -1,12 +1,12 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-18T23:25:16+01:00
+@Last modified time: 2021-04-19T13:23:29+01:00
 -->
 
 <template>
 <div class="courses mx-auto">
   <b-row>
-    <b-form-input class=" col  " v-model="form.email" placeholder="Enter Email" type="email" />
+    <b-form-input class=" col" v-model="form.email" placeholder="Enter Email" type="email" />
   </b-row>
   <b-row>
     <b-form-input class=" col mt-3 " v-model="form.password" placeholder="Enter Password" type="password" />

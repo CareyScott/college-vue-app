@@ -1,14 +1,14 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-18T23:30:03+01:00
+@Last modified time: 2021-04-19T13:55:33+01:00
 -->
 
 
 <template>
-<div class="user">
-  <b-navbar toggleable="lg" type="dark" variant="info">
+<div class="user" >
+  <b-navbar toggleable="lg" type="dark" variant="light" class="text-dark">
 
-    <b-navbar-brand to="/">
+    <b-navbar-brand to="/" class="text-dark">
       COLLEGE.
     </b-navbar-brand>
 
@@ -17,17 +17,17 @@
     <b-collapse id="nav-collapse" is-nav>
 
       <!-- LEFT SIDE -->
-      <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
-
-
-        <!-- <b-nav-item to ="/about">About</b-nav-item>
-      <b-nav-item to ="/contact">Contact</b-nav-item> -->
-        <b-nav-item to="/courses">Courses</b-nav-item>
-        <b-nav-item to="/lecturers">Lecturers</b-nav-item>
-        <b-nav-item to="/enrolments">Enrolements</b-nav-item>
-        <!-- <b-nav-item to="/login">Login</b-nav-item> -->
-
+      <b-navbar-nav v-if="loggedIn" class="mt-3 ml-4">
+        <b-nav-item to="/"><p class="text-dark underline-on-hover" variant="link">Home</p></b-nav-item>
+        <b-nav-item to="/courses"><p class="text-dark underline-on-hover" variant="link">Courses</p></b-nav-item>
+        <b-nav-item to="/lecturers"><p class="text-dark underline-on-hover" variant="link">Lecturers</p></b-nav-item>
+        <b-nav-item to="/enrolments"><p class="text-dark underline-on-hover" variant="link">Enrolements</p></b-nav-item>
+      </b-navbar-nav>
+      <b-navbar-nav v-else class="mt-3 ml-4">
+        <b-nav-item to="/"><p class="text-dark underline-on-hover" variant="link">Home</p></b-nav-item>
+        <b-nav-item to="/"><p class="text-dark underline-on-hover" variant="link">Courses</p></b-nav-item>
+        <b-nav-item to="/"><p class="text-dark underline-on-hover" variant="link">Lecturers</p></b-nav-item>
+        <b-nav-item to="/"><p class="text-dark underline-on-hover" variant="link">Enrolements</p></b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -44,9 +44,12 @@
           <b-dropdown-item href="#">RU</b-dropdown-item>
           <b-dropdown-item href="#">FA</b-dropdown-item>
         </b-nav-item-dropdown> -->
+        <b-button v-if="loggedIn" class="btn-dark" @click="logout()"> Logout </b-button>
+        <b-button v-else class="btn-dark">
+          <router-link class=" text-light" :to="{name: 'home'}">Login</router-link>
+        </b-button>
 
-        <b-nav-item-dropdown right>
-          <!-- Using 'button-content' slot -->
+        <!-- <b-nav-item-dropdown right>
           <template #button-content>
             {{user}}
             user
@@ -69,7 +72,7 @@
           </div>
 
 
-        </b-nav-item-dropdown>
+        </b-nav-item-dropdown> -->
       </b-navbar-nav>
 
 
@@ -87,14 +90,6 @@
   </b-navbar>
 
 
-
-  <!-- <router-link to ="/">Home</router-link>
-
-<router-link to ="/about">About</router-link>
-<router-link to ="/contact">Contact</router-link> -->
-
-
-  <!-- <router-link :to = "{name: 'testing', params: {id: 123}}">Testing</router-link> -->
 
 
 </div>
@@ -115,6 +110,7 @@ export default {
   },
   data() {
     return {
+      // isHovered: false,
       courses: {
         lecturers: []
       },
@@ -132,21 +128,7 @@ export default {
       .then(response => {
         console.log(response.data);
         this.user = response.data.data;
-        // this.enrolements = response.data.data;
-        // this.lecturer = response.data.data;
-        // this.$router.replace({name:'courses_index'});
 
-        // this.$notify({
-        //   group: 'foo',
-        //   title: 'Important message',
-        //   text: 'Profile Loaded',
-        //   type: 'success',
-        //   speed: 700,
-        //   data: {
-        //     width: 550,
-        //
-        //   }
-        // });
       })
       .catch(error => {
         console.log(error)
@@ -155,6 +137,9 @@ export default {
 
   },
   methods: {
+    // handleHover(hovered) {
+    //     this.isHovered = hovered
+    //   },
 
     setLoggedIn() {
       this.loggedIn = true;
@@ -197,16 +182,7 @@ export default {
 </script>
 
 <style>
-/* #nav {
-  padding: 30px;
-  text-align: center;
+.underline-on-hover:hover {
+    text-decoration: underline;
 }
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-
-  color: #42b983;
-} */
 </style>

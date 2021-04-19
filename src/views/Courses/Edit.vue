@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-16T16:44:36+01:00
+@Last modified time: 2021-04-19T14:41:49+01:00
 -->
 
 
@@ -13,7 +13,7 @@
   img-src="https://picsum.photos/900/250/?image=3"
   img-alt="Card Image"
   text-variant="white"
-  title="Create Course"
+  title="Edit Course"
   sub-title="New"
 
   >
@@ -139,6 +139,20 @@ export default {
   mounted() {
 
     this.id = this.$route.params.id
+
+    let token = localStorage.getItem('token');
+
+    axios.get('https://college-api-scott.herokuapp.com/api/courses/'  + this.$route.params.id, {
+
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.course = response.data.data;
+        // this.$router.replace({name:'courses_index'});
+      })
 
   },
   methods: {

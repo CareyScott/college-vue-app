@@ -1,13 +1,13 @@
 <!--
 @Date:   2021-03-30T22:01:55+01:00
-@Last modified time: 2021-04-17T20:42:44+01:00
+@Last modified time: 2021-04-19T13:20:55+01:00
 -->
 
 
 
 <template>
 <div>
-  <MyNavBar :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut" />
+  <MyNavBar :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut"  />
   <b-container>
 
     <notifications group="foo" animation-type="velocity"  position="bottom right" />
