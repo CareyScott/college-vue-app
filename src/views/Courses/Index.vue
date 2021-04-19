@@ -1,39 +1,38 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T20:38:36+01:00
+@Last modified time: 2021-04-19T01:08:09+01:00
 -->
 
 <template>
-  <container>
+  <b-container class="courses">
   <b-row>
     <div class="col">
-      <!-- <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link> -->
-      <b-card bg-variant="dark" class="mt-4 mb-4" text-variant="white" title="Courses">
+      <b-card  class="mt-4 mb-4 index-bg" text-variant="white" title="Courses">
         <b-card-text>
           Listed are all of the currently available courses at COLLEGE.
         </b-card-text>
         <b-card-text>
           Click below to create a new Course.
         </b-card-text>
-        <router-link class="btn-primary btn" :to="{ name: 'courses_create'}">Create</router-link>
       </b-card>
     </div>
   </b-row>
-  <b-row>
-    <b-col>
-      <b-form-input size="md" class="mr-sm-2 col-4" :type="search" placeholder="Search" v-model="term"></b-form-input>
-    </b-col>
+  <b-row class="px-3 py-2 bg-dark text-white rounded">
+      <b-form-input size="md" class=" col-4 " :type="search" placeholder="Search Courses..." v-model="term"></b-form-input>
+      <div class="col-7"></div>
+      <router-link class="btn-primary btn col" :to="{ name: 'courses_create'}">Create</router-link>
   </b-row>
 
   <b-row>
     <b-card class="col-4 mt-3" v-for="filterCourse in filterCourses" :key="filterCourse.id">
       <router-link :to="{name: 'courses_show', params: {id:filterCourse.id, title:filterCourse.title , code:filterCourse.code , level:filterCourse.level, points:filterCourse.points} }">
-        {{filterCourse.title.substring(0,30)+".."}}
         <img v-for="image in images" :key="image.id" :src="image.urls.small" :alt="image.alt_description" class="img-fluid" />
+
+        {{filterCourse.title.substring(0,30)+".."}}
       </router-link>
     </b-card>
   </b-row>
-</container>
+</b-container>
 </template>
 <!-- <template>
 <div>
@@ -45,7 +44,23 @@
 </b-col> -->
 
 
+<style>
+.index-bg {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1495539406979-bf61750d38ad?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnV0dXJlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60") !important;
 
+  /* Set a specific height */
+  min-height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+</style>
 
 <script>
 import axios from 'axios';

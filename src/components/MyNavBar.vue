@@ -1,11 +1,11 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-17T20:47:16+01:00
+@Last modified time: 2021-04-18T23:30:03+01:00
 -->
 
 
 <template>
-<div>
+<div class="user">
   <b-navbar toggleable="lg" type="dark" variant="info">
 
     <b-navbar-brand to="/">
@@ -19,6 +19,8 @@
       <!-- LEFT SIDE -->
       <b-navbar-nav>
         <b-nav-item to="/">Home</b-nav-item>
+
+
         <!-- <b-nav-item to ="/about">About</b-nav-item>
       <b-nav-item to ="/contact">Contact</b-nav-item> -->
         <b-nav-item to="/courses">Courses</b-nav-item>
@@ -46,13 +48,13 @@
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template #button-content>
-          User
+            {{user}}
+            user
           </template>
           <div v-if="loggedIn">
             <b-dropdown-item lass="float-right" variant="danger" @click="logout()">
              Logout
           </b-dropdown-item>
-
           </div>
           <div v-else>
             <b-dropdown-item href="#">
@@ -60,6 +62,9 @@
             </b-dropdown-item>
             <b-dropdown-item href="#">
               <router-link class="btn  ml-1" :to="{name: 'register'}">Register</router-link>
+            </b-dropdown-item>
+            <b-dropdown-item href="#">
+              <router-link class="btn  ml-1" :to="{name: 'profile'}">Profile</router-link>
             </b-dropdown-item>
           </div>
 
@@ -112,10 +117,41 @@ export default {
     return {
       courses: {
         lecturers: []
-      }
+      },
+      user: [],
     }
   },
   mounted() {
+
+    let token = localStorage.getItem('token');
+    axios.get('https://college-api-scott.herokuapp.com/api/user', {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.user = response.data.data;
+        // this.enrolements = response.data.data;
+        // this.lecturer = response.data.data;
+        // this.$router.replace({name:'courses_index'});
+
+        // this.$notify({
+        //   group: 'foo',
+        //   title: 'Important message',
+        //   text: 'Profile Loaded',
+        //   type: 'success',
+        //   speed: 700,
+        //   data: {
+        //     width: 550,
+        //
+        //   }
+        // });
+      })
+      .catch(error => {
+        console.log(error)
+        console.log(error.response.data)
+      })
 
   },
   methods: {
@@ -134,7 +170,7 @@ export default {
     logout() {
 
       let token = localStorage.getItem('token');
-      axios.get('https://college-api-scott.herokuapp.com/api/courses', {
+      axios.get('https://college-api-scott.herokuapp.com/api/logout', {
           headers: {
             Authorization: "Bearer " + token
           }

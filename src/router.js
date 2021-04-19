@@ -1,6 +1,6 @@
 /**
  * @Date:   2021-03-30T22:12:06+01:00
- * @Last modified time: 2021-04-15T20:38:02+01:00
+ * @Last modified time: 2021-04-18T19:49:17+01:00
  */
 import Vue from 'vue'
 
@@ -10,6 +10,7 @@ import Home from './views/Home'
 import About from './views/About'
 import Contact from './views/Contact'
 import Login from './views/HomeLogin'
+import Profile from './views/Profile'
 import Register from './views/Register'
 
 import CoursesIndex from './views/Courses/Index'
@@ -61,6 +62,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     },
 
     {

@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T20:22:31+01:00
+@Last modified time: 2021-04-19T01:04:59+01:00
 -->
 
 <template>
@@ -8,17 +8,24 @@
 
   <b-col>
     <!-- <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link> -->
-    <b-card bg-variant="dark" class="mt-4 mb-4" text-variant="white" title="Enrolments">
+    <b-card class="mt-4 mb-4 index-bg" text-variant="white" title="Enrolments">
       <b-card-text>
         Listed are all of the current Enrolments at COLLEGE.
       </b-card-text>
       <b-card-text>
         Click below to create a new Enrolment.
       </b-card-text>
-      <router-link class="btn-primary btn" :to="{ name: 'enrolments_create'}">Create</router-link>
+      <!-- <router-link class="btn-primary btn" :to="{ name: 'enrolments_create'}">Create</router-link> -->
 
 
     </b-card>
+
+    <b-row class="px-3 mb-4 py-2 bg-dark text-white rounded">
+        <!-- <b-form-input size="md" class=" col-4 " :type="search" placeholder="Search Courses..." v-model="term"></b-form-input> -->
+        <div class="col-11"></div>
+        <router-link class="btn-primary btn col" :to="{ name: 'enrolments_create'}">Create</router-link>
+
+    </b-row>
   </b-col>
     <!-- <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button> -->
 
@@ -49,6 +56,23 @@
 
 
 
+<style>
+.index-bg {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1495539406979-bf61750d38ad?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnV0dXJlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60") !important;
+
+  /* Set a specific height */
+  min-height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+</style>
 
 <script>
 import axios from 'axios';

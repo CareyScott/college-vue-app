@@ -1,14 +1,14 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T20:54:18+01:00
+@Last modified time: 2021-04-19T00:45:21+01:00
 -->
 
 <template>
 <b-container class="enrolments">
   <notifications group="foo" />
   <b-row>
-    <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <b-col class="text-center mb-4 mt-5">
+    <div class="col g-0 mt-3   overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+      <b-col class="mb-4 mt-5">
         <!-- <div class="parallax shadow-sm mb-4"></div> -->
 
         <b-card overlay img-src="https://picsum.photos/900/250/?image=5" img-alt="Card Image" text-variant="white" title="Enrolment">
@@ -24,34 +24,8 @@
     </div>
 
   </b-row>
-  <!--
   <b-row>
-    <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <b-col class=" p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-primary">Enrolment Details</strong>
-        <b-row>
-          <div class="col mb-3">
-            <h4 class="card-text mb-auto mt-3">Date:</h4>
-            <h4 class="card-text mb-auto mt-3">Time:</h4>
-            <h4 class="card-text mb-auto mt-3">Status:</h4>
-            <h4 class="card-text mb-auto mt-3">Course:</h4>
-            <h4 class="card-text mb-auto mt-3">Lecturer:</h4>
-          </div>
-          <div class="col text-info">
-            <h4 class="card-text mb-auto mt-3 text-capitalize"> {{enrolment.date}}</h4>
-            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.time}}</h4>
-            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.status}}</h4>
-            <h4 class="card-text mb-auto mt-3 text-capitalize">{{enrolment.course.title}}</h4>
-            <h4 class="card-text mb-auto mt-3 text-capitalize" >{{enrolment.lecturer.name}}</h4>
-          </div>
-        </b-row>
-      </b-col>
-    </div> -->
-
-
-
-  <b-row>
-    <div class=" col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class=" col-6 g-0 border  overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <b-col class=" p-4 d-flex flex-column position-static">
         <strong class="d-inline-block mb-2 text-primary">Enrolment Details</strong>
         <b-row>
@@ -123,25 +97,25 @@
     </b-col>
   </b-row>
 
-    <!-- <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
+  <!-- <router-link class="btn btn-info ml-5 float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
       Edit Enrolment
     </router-link>
     <b-button class="btn-danger ml-4" id="show-btn float-right" @click="$bvModal.show('delete-modal')">Delete Enrolment</b-button> -->
-    <b-modal id="delete-modal" hide-footer>
-      <template #modal-title>
-        Are you sure?
-      </template>
-      <div class="d-block text-center">
-        <h4>Do you want to delete this enrolment?</h4>
-      </div>
-      <b-col>
-        <b-button class="mt-3 btn btn-gray" block @click="$bvModal.hide('delete-modal')">Cancel</b-button>
-      </b-col>
-      <b-col>
-        <b-button class="mt-3 btn btn-danger" block @click="deleteEnrolment()">Delete</b-button>
-      </b-col>
+  <b-modal id="delete-modal" hide-footer>
+    <template #modal-title>
+      Are you sure?
+    </template>
+    <div class="d-block text-center">
+      <h4>Do you want to delete this enrolment?</h4>
+    </div>
+    <b-col>
+      <b-button class="mt-3 btn btn-gray" block @click="$bvModal.hide('delete-modal')">Cancel</b-button>
+    </b-col>
+    <b-col>
+      <b-button class="mt-3 btn btn-danger" block @click="deleteEnrolment()">Delete</b-button>
+    </b-col>
 
-    </b-modal>
+  </b-modal>
 
 
 </b-container>

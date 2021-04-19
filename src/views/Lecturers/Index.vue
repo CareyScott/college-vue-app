@@ -1,14 +1,14 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T20:39:01+01:00
+@Last modified time: 2021-04-19T01:08:28+01:00
 -->
 
 <template>
-<container class="lecturers">
+<b-container class="lecturers">
   <b-row>
     <div class="col">
       <!-- <router-link class="  btn btn-primary" :to="{ name: 'courses_create'}">Create</router-link> -->
-      <b-card bg-variant="dark" class="mt-4 mb-4" text-variant="white" title="Lecturers">
+      <b-card  class="mt-4 mb-4 index-bg" text-variant="white" title="Lecturers">
         <b-card-text>
           Listed are all of the currently available Lecturers at COLLEGE.
         </b-card-text>
@@ -19,12 +19,12 @@
       </b-card>
     </div>
   </b-row>
-  <b-row>
-    <b-col>
-      <b-form-input size="md" class="mr-sm-2 col-4" :type="search" placeholder="Search" v-model="term"></b-form-input>
-    </b-col>
+  <b-row class="px-3 py-2 bg-dark text-white rounded">
+      <b-form-input size="md" class=" col-4 " :type="search" placeholder="Search Lecturers..." v-model="term"></b-form-input>
+      <div class="col-7"></div>
+      <router-link class="btn-primary btn col" :to="{ name: 'lecturers_create'}">Create</router-link>
   </b-row>
-
+  <b-row>
   <b-card-group class="mt-4" columns>
     <b-card v-for="lecturer in filterLecturers" :key="lecturer.id">
       <router-link :to="{name: 'lecturers_show', params: {id:lecturer.id, address:lecturer.address , email:lecturer.email , phone:lecturer.phone, enrolements:lecturer.enrolements} }">
@@ -43,7 +43,8 @@
   </div>
 </template> -->
 
-</container>
+</b-row>
+</b-container>
 
 
 </template>
@@ -197,5 +198,19 @@ export default {
 </script>
 
 <style>
+.index-bg {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1495539406979-bf61750d38ad?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnV0dXJlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60") !important;
 
+  /* Set a specific height */
+  min-height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
 </style>

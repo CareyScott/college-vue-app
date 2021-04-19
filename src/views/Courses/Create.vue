@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-16T16:19:36+01:00
+@Last modified time: 2021-04-18T22:56:04+01:00
 -->
 
 
@@ -160,7 +160,17 @@ export default {
           this.$router.push({
             name: 'courses_index'
           });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Course Created Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
 
+            }
+          });
 
         })
         .catch(error => {

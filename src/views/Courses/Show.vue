@@ -1,14 +1,14 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-17T19:38:57+01:00
+@Last modified time: 2021-04-19T00:43:22+01:00
 -->
 
 <template>
 <b-container class="courses">
 
   <b-row>
-    <div class="col g-0 mt-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <b-col class="text-center mb-4 mt-5">
+    <div class="col g-0 mt-3   overflow-hidden flex-md-row mb-4  h-md-250 position-relative">
+      <b-col class=" mb-4 mt-5">
         <!-- <div class="parallax shadow-sm mb-4"></div> -->
 
         <b-card overlay img-src="https://picsum.photos/900/250/?image=5" img-alt="Card Image" text-variant="white" title="Course">
@@ -26,7 +26,7 @@
   </b-row>
   <b-row>
 
-    <div class="  mx-auto col-6 g-0 border rounded overflow-hidden  mb-4 shadow-sm">
+    <div class="  mx-auto col-6 g-0   overflow-hidden  mb-4 ">
       <b-col class=" p-4 flex-column">
         <strong class="d-inline-block mb-2 text-primary">Course Details</strong>
         <b-row>
@@ -43,7 +43,7 @@
         </b-row>
       </b-col>
     </div>
-    <div class=" mx-auto col-6 g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class=" mx-auto col-6 g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative">
       <b-col class=" p-4 d-flex flex-column position-static">
         <strong class="d-inline-block mb-2 text-primary">Course Enrolments</strong>
         <b-row>
@@ -171,10 +171,7 @@ export default {
           text: 'Step One',
           value: 'first'
         },
-        {
-          text: 'Step Two ',
-          value: 'second'
-        },
+
 
       ],
       fields: [{
