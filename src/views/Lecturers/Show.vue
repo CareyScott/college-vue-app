@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T00:43:50+01:00
+@Last modified time: 2021-04-20T23:40:08+01:00
 -->
 
 <template>
@@ -238,6 +238,8 @@ export default {
 
         this.$notify({
           group: 'foo',
+          type: 'success',
+
           title: 'Important message',
           text: 'Lecturer Loaded'
         });
@@ -245,6 +247,12 @@ export default {
       .catch(error => {
         console.log(error)
         console.log(error.response.data)
+        this.$notify({
+          group: 'foo',
+          title: 'Error',
+          type: 'error',
+          text: 'Something Went Wrong.'
+        });
       })
 
 
@@ -284,6 +292,12 @@ export default {
           })
           .catch(function(error) {
             console.log(error);
+            this.$notify({
+              group: 'foo',
+              title: 'Error',
+              type: 'error',
+              text: 'Something Went Wrong. Enrolment not deleted'
+            });
           });
       });
 
@@ -297,11 +311,29 @@ export default {
           // this.$router.replace({name:'lecturers_index'});
           this.$router.push({
             name: 'lecturers_index'
+
+          });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Lecturer deleted Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
+
+            }
           });
         })
         .catch(error => {
           console.log(error)
           console.log(error.response.data)
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong. Lecturer not deleted'
+          });
         })
 
     },

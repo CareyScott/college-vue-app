@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-17T18:59:40+01:00
+@Last modified time: 2021-04-20T23:39:28+01:00
 -->
 
 
@@ -51,19 +51,19 @@
     <div class="mt-3 col-6">
       <b-form-group>
         <label class="font-weight-bold" for="formGroupExampleInput">Name</label>
-        <b-form-input type="text" v-model="form.name" class="form-control" placeholder="Enter Name..."></b-form-input><span v-if="errors.name"> {{ errors.name }} </span>
+        <b-form-input type="text" v-model="lecturer.name" class="form-control" placeholder="Enter Name..."></b-form-input><span v-if="errors.name"> {{ errors.name }} </span>
       </b-form-group>
       <b-form-group>
         <label class="font-weight-bold" for="formGroupExampleInput2">Address</label>
-        <b-form-input type="text" v-model="form.address" class="form-control" placeholder="Enter Address..."></b-form-input><span v-if="errors.address"> {{ errors.address }} </span>
+        <b-form-input type="text" v-model="lecturer.address" class="form-control" placeholder="Enter Address..."></b-form-input><span v-if="errors.address"> {{ errors.address }} </span>
       </b-form-group>
       <b-form-group>
         <label class="font-weight-bold" for="formGroupExampleInput">Email</label>
-        <b-form-input type="text" v-model="form.email" class="form-control" placeholder="Enter Email..."></b-form-input><span v-if="errors.email"> {{ errors.email }} </span>
+        <b-form-input type="text" v-model="lecturer.email" class="form-control" placeholder="Enter Email..."></b-form-input><span v-if="errors.email"> {{ errors.email }} </span>
       </b-form-group>
       <b-form-group>
         <label class="font-weight-bold" for="formGroupExampleInput">Phone</label>
-        <vue-tel-input type="text" v-model="form.phone" class="form-control" Number placeholder="Enter Phone"></vue-tel-input><span v-if="errors.phone"> {{ errors.phone }} </span>
+        <vue-tel-input type="text" v-model="lecturer.phone" class="form-control" Number placeholder="Enter Phone"></vue-tel-input><span v-if="errors.phone"> {{ errors.phone }} </span>
       </b-form-group>
 
     </div>
@@ -84,37 +84,66 @@ export default {
   components: {},
   data() {
     return {
-      form: {
-        name: "",
-        address: "",
-        email: "",
-        phone: "",
+      lecturer: {
+
       },
-      lecturer: [],
       errors: {}
     }
   },
   mounted() {
 
+    this.getLecturer();
+
     this.id = this.$route.params.id
 
   },
   methods: {
+
+    getLecturer(){
+      this.id = this.$route.params.id
+
+      let token = localStorage.getItem('token');
+
+      axios.get('https://college-api-scott.herokuapp.com/api/lecturers/' + this.$route.params.id, {
+
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          this.lecturer = response.data.data;
+          // this.$router.replace({name:'courses_index'});
+        })
+
+    },
+
     editLecturer() {
       let token = localStorage.getItem('token');
 
 
       axios.put('https://college-api-scott.herokuapp.com/api/lecturers/' + this.$route.params.id,{
-        name: this.form.name,
-        address: this.form.address,
-        email: this.form.email,
-        phone: this.form.phone,
+        name: this.lecturer.name,
+        address: this.lecturer.address,
+        email: this.lecturer.email,
+        phone: this.lecturer.phone,
         }, {
           headers: {  Authorization: "Bearer " + token}
         })
         .then(response => {
           console.log(response.data);
           this.$router.push({ name: 'lecturers_index' });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Lecturer Updated Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
+
+            }
+          });
         })
         .catch(error => {
           console.log(error)
@@ -122,6 +151,12 @@ export default {
           if (error.response.data.errors) {
             this.errors = error.response.data.errors
           }
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong.'
+          });
         })
     }
   },

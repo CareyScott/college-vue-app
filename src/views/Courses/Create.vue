@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-18T22:56:04+01:00
+@Last modified time: 2021-04-20T23:27:12+01:00
 -->
 
 
@@ -179,6 +179,12 @@ export default {
           if (error.response.data.errors) {
             this.errors = error.response.data.errors
           }
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong.'
+          });
         })
     }
   },

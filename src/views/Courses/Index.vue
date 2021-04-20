@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T12:05:13+01:00
+@Last modified time: 2021-04-20T23:29:47+01:00
 -->
 
 <template>
@@ -18,7 +18,7 @@
     </div>
   </b-row>
   <b-row class="px-3 py-2 bg-dark text-white rounded">
-      <b-form-input size="md" class=" col-4 " :type="search" placeholder="Search Courses..." v-model="term"></b-form-input>
+      <b-form-input size="md" class=" col-4 "  placeholder="Search Courses..." v-model="term"></b-form-input>
       <div class="col-7"></div>
       <router-link class="btn-primary btn col" :to="{ name: 'courses_create'}">Create</router-link>
   </b-row>
@@ -26,11 +26,11 @@
 
 
   <b-row>
-    <b-card class="col-4 mt-3" v-for="filterCourse in filterCourses" :key="filterCourse.id">
+    <b-card class="col-4 mt-3" v-for="(filterCourse, index) in filterCourses" :key="filterCourse.id">
       <router-link :to="{name: 'courses_show', params: {id:filterCourse.id, title:filterCourse.title , code:filterCourse.code , level:filterCourse.level, points:filterCourse.points} }">
-        <img v-for="image in images" :key="image.id" :src="image.urls.small" :alt="image.alt_description" class="img-fluid" />
-
+        <img :src="images[index].urls.small" class="img-fluid" />
         {{filterCourse.title.substring(0,30)+".."}}
+
       </router-link>
     </b-card>
   </b-row>
@@ -90,8 +90,9 @@ export default {
     }
   },
 
-  mounted() {
+  created() {
 
+    this.length = this.courses.length
 
 
     this.searchUnsplash()
@@ -108,8 +109,18 @@ export default {
         console.log(response.data);
         this.courses = response.data.data;
         this.filterCourses = response.data.data;
-        // this.$router.replace({name:'courses_index'});
       })
+      this.$notify({
+        group: 'foo',
+        title: 'Important message',
+        text: 'All Courses Loaded',
+        type: 'success',
+        speed: 1000,
+        data: {
+          width: 550,
+
+        }
+      });
 
     // this.images = [];
     // axios.get('https://api.unsplash.com/photos/', {
@@ -136,11 +147,13 @@ export default {
 
   methods: {
 
+    // doMath: function (index) {
+    //       return index+1
+    //     },
 
     searchUnsplash() {
       this.images = [];
-      axios.get(`https://api.unsplash.com/search/photos?query=college&per_page=1
-      `, {
+      axios.get(`https://api.unsplash.com/search/photos?query=college&orientation=landscape&per_page=60`   ,  {
           headers: {
             Authorization: "Client-ID 99s9eFcJIH_mgs5cHe7nCvdAk2z9wkf5uXxkbo9S83k",
             "Accept-Version": "v1"

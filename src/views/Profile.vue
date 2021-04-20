@@ -1,6 +1,6 @@
 
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-18T23:43:29+01:00
+@Last modified time: 2021-04-20T10:09:17+01:00
 
 
 <template>
@@ -19,7 +19,7 @@
 
 </style>
 <script>
-import Profile from '@/components/Auth/Profile'
+import Profile from '@/components/auth/Profile'
 
 export default {
   name: 'profile',

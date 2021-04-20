@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T00:43:22+01:00
+@Last modified time: 2021-04-20T23:40:47+01:00
 -->
 
 <template>
@@ -168,7 +168,7 @@ export default {
       value: [],
 
       confirmDelete: [{
-          text: 'Step One',
+          text: 'I Understand',
           value: 'first'
         },
 
@@ -196,7 +196,7 @@ export default {
   },
   computed: {
     state() {
-      return this.value.length === 2
+      return this.value.length === 1
     }
   },
   mounted() {
@@ -269,6 +269,12 @@ export default {
           })
           .catch(function(error) {
             console.log(error);
+            this.$notify({
+              group: 'foo',
+              title: 'Error',
+              type: 'error',
+              text: 'Something Went Wrong. Enrolments not deleted'
+            });
           });
       });
 
@@ -279,14 +285,32 @@ export default {
         })
         .then(response => {
           console.log(response.data);
+
           // this.$router.replace({name:'courses_index'});
           this.$router.push({
             name: 'courses_index'
+          });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Course deleted Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
+
+            }
           });
         })
         .catch(error => {
           console.log(error)
           console.log(error.response.data)
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong. Course not deleted'
+          });
         })
 
     },

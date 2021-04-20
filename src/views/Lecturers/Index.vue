@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T01:08:28+01:00
+@Last modified time: 2021-04-20T23:42:55+01:00
 -->
 
 <template>
@@ -15,12 +15,12 @@
         <b-card-text>
           Click below to create a new lecturer.
         </b-card-text>
-        <router-link class="btn-primary btn" :to="{ name: 'courses_create'}">Create</router-link>
+        <!-- <router-link class="btn-primary btn" :to="{ name: 'courses_create'}">Create</router-link> -->
       </b-card>
     </div>
   </b-row>
   <b-row class="px-3 py-2 bg-dark text-white rounded">
-      <b-form-input size="md" class=" col-4 " :type="search" placeholder="Search Lecturers..." v-model="term"></b-form-input>
+      <b-form-input size="md" class=" col-4 " placeholder="Search Lecturers..." v-model="term"></b-form-input>
       <div class="col-7"></div>
       <router-link class="btn-primary btn col" :to="{ name: 'lecturers_create'}">Create</router-link>
   </b-row>
@@ -97,6 +97,12 @@ export default {
       .catch(error => {
         console.log(error)
         console.log(error.response.data)
+        this.$notify({
+          group: 'foo',
+          title: 'Error',
+          type: 'error',
+          text: 'Something Went Wrong.'
+        });
       })
 
 
@@ -134,6 +140,12 @@ export default {
         .catch(error => {
           console.log(error)
           console.log(error.response.data)
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong.'
+          });
         })
     },
 
@@ -149,30 +161,30 @@ export default {
       });
     },
 
-
-
-    logout() {
-
-      let token = localStorage.getItem('token');
-      axios.get('https://college-api-scott.herokuapp.com/api/lecturers', {
-          headers: {
-            Authorization: "Bearer " + token
-          }
-        })
-        .then(response => {
-          console.log(response.data);
-          // this.$router.replace({name:'lecturers_index'});
-        })
-        .catch(error => {
-          console.log(error)
-          console.log(error.response.data)
-        })
-
-      localStorage.removeItem('token');
-      this.$router.replace({
-        name: 'home'
-      });
-    },
+    //
+    //
+    // logout() {
+    //
+    //   let token = localStorage.getItem('token');
+    //   axios.get('https://college-api-scott.herokuapp.com/api/lecturers', {
+    //       headers: {
+    //         Authorization: "Bearer " + token
+    //       }
+    //     })
+    //     .then(response => {
+    //       console.log(response.data);
+    //       // this.$router.replace({name:'lecturers_index'});
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //       console.log(error.response.data)
+    //     })
+    //
+    //   localStorage.removeItem('token');
+    //   this.$router.replace({
+    //     name: 'home'
+    //   });
+    // },
 
     // searchLecturers(){
     //   let token = localStorage.getItem('token');

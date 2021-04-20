@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:01:55+01:00
-@Last modified time: 2021-04-19T13:20:55+01:00
+@Last modified time: 2021-04-20T22:54:49+01:00
 -->
 
 
@@ -47,12 +47,11 @@ export default {
     } else {
       this.loggedIn = false;
     }
-  },
-  mounted() {
 
     this.id = this.$route.params.id
 
   },
+
   methods: {
     setLoggedIn() {
       this.loggedIn = true;

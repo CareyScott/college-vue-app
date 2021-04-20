@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-16T22:00:13+01:00
+@Last modified time: 2021-04-20T23:37:04+01:00
 -->
 
 
@@ -8,7 +8,7 @@
 <template>
 <b-container class="enrolments mt-5">
 
-  <b-card overlay img-src="https://picsum.photos/900/250/?image=3" img-alt="Card Image" text-variant="white" title="Edit Enrolment" sub-title="New">
+  <b-card overlay img-src="https://picsum.photos/900/250/?image=3" img-alt="Card Image" text-variant="white" title="Create Enrolment" sub-title="New">
     <b-card-text>
       Enter enrolment details into the form below. Make sure all of the information is correct before submitting.
     </b-card-text>
@@ -105,6 +105,7 @@ export default {
         console.log(response.data);
         this.lecturers = response.data.data;
         // this.$router.replace({name:'enrolments_index'});
+        
       })
 
 
@@ -135,7 +136,17 @@ export default {
           this.$router.push({
             name: 'enrolments_index'
           });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Enrolment Created Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
 
+            }
+          });
 
         })
         .catch(error => {
@@ -144,6 +155,12 @@ export default {
           if (error.response.data.errors) {
             this.errors = error.response.data.errors
           }
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong.'
+          });
         })
     }
   },

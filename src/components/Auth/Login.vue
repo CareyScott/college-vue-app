@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T13:23:29+01:00
+@Last modified time: 2021-04-20T23:06:22+01:00
 -->
 
 <template>
@@ -33,6 +33,17 @@ export default {
     }
   },
   methods: {
+
+        setLoggedIn() {
+          this.loggedIn = true;
+
+          // optionally, you could store the token in localStorage here
+        },
+        setLoggedOut() {
+          this.loggedIn = false;
+          // optionally, you could trigger the whole logout process here
+        },
+
     login() {
       axios.post('https://college-api-scott.herokuapp.com/api/login', {
 

@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T01:04:59+01:00
+@Last modified time: 2021-04-20T23:31:20+01:00
 -->
 
 <template>
@@ -103,6 +103,12 @@ export default {
     .catch(error => {
       console.log(error)
       console.log(error.response.data)
+      this.$notify({
+        group: 'foo',
+        title: 'Error',
+        type: 'error',
+        text: 'Something Went Wrong.'
+      });
     })
 
 
@@ -123,29 +129,35 @@ export default {
    .catch(error => {
      console.log(error)
      console.log(error.response.data)
+     this.$notify({
+       group: 'foo',
+       title: 'Error',
+       type: 'error',
+       text: 'Something Went Wrong.'
+     });
    })
  },
 
 
-
- logout() {
-
-   let token = localStorage.getItem('token');
-   axios.get('https://college-api-scott.herokuapp.com/api/enrolments',{
-     headers: {Authorization: "Bearer " + token}
-   })
-   .then(response => {
-     console.log(response.data);
-     // this.$router.replace({name:'enrolments_index'});
-   })
-   .catch(error => {
-     console.log(error)
-     console.log(error.response.data)
-   })
-
-   localStorage.removeItem('token');
-   this.$router.replace({name:'home'});
- },
+ //
+ // logout() {
+ //
+ //   let token = localStorage.getItem('token');
+ //   axios.get('https://college-api-scott.herokuapp.com/api/enrolments',{
+ //     headers: {Authorization: "Bearer " + token}
+ //   })
+ //   .then(response => {
+ //     console.log(response.data);
+ //     // this.$router.replace({name:'enrolments_index'});
+ //   })
+ //   .catch(error => {
+ //     console.log(error)
+ //     console.log(error.response.data)
+ //   })
+ //
+ //   localStorage.removeItem('token');
+ //   this.$router.replace({name:'home'});
+ // },
 
  searchEnrolments(){
    let token = localStorage.getItem('token');

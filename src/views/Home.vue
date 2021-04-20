@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T14:13:30+01:00
+@Last modified time: 2021-04-20T12:25:45+01:00
 -->
 
 
@@ -114,8 +114,8 @@
 }
 </style>
 <script>
-import Login from '@/components/Auth/Login'
-import Register from '@/components/Auth/Register'
+import Login from '@/components/auth/Login'
+import Register from '@/components/auth/Register'
 
 export default {
   name: 'home',
@@ -143,6 +143,6 @@ export default {
 .lighten-on-hover:hover {
     text-decoration: underline;
     background-color: white !important;
-    color: white !important;
+    color: black !important;
 }
 </style>

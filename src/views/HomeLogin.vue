@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-07T16:53:04+01:00
-@Last modified time: 2021-04-07T18:01:19+01:00
+@Last modified time: 2021-04-20T10:08:27+01:00
 -->
 <template>
 <b-col class="courses">
@@ -9,7 +9,7 @@
 </b-col>
 </template>
 <script>
-import Login from '@/components/Auth/Login'
+import Login from '@/components/auth/Login'
 
 export default {
   name: 'Auth',

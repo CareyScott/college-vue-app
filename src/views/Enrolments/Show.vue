@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:15:57+01:00
-@Last modified time: 2021-04-19T00:45:21+01:00
+@Last modified time: 2021-04-20T23:42:11+01:00
 -->
 
 <template>
@@ -88,7 +88,7 @@
   <b-row class="mb-4">
     <b-col class="col-8"></b-col>
     <b-col class="col-2">
-      <router-link class="btn btn-info float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, title:enrolment.title , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
+      <router-link class="btn btn-info float-right" :to="{name: 'enrolments_edit', params: {id:enrolment.id, date:enrolment.date ,time:enrolment.time , code:enrolment.code , level:enrolment.level, points:enrolment.points} }">
         Edit Enrolment
       </router-link>
     </b-col>
@@ -106,13 +106,24 @@
       Are you sure?
     </template>
     <div class="d-block text-center">
-      <h4>Do you want to delete this enrolment?</h4>
+      <h4><b-icon icon="exclamation-circle-fill"  variant="danger"></b-icon>&nbsp; Do you want to delete this Enrolment?</h4>
     </div>
     <b-col>
       <b-button class="mt-3 btn btn-gray" block @click="$bvModal.hide('delete-modal')">Cancel</b-button>
     </b-col>
     <b-col>
-      <b-button class="mt-3 btn btn-danger" block @click="deleteEnrolment()">Delete</b-button>
+      <!-- <b-button class="mt-3 btn btn-danger" block @click="deleteCourse()">Delete</b-button> -->
+
+      <b-form-invalid-feedback :state="state">I accept that deleting this Enbrolment will delete it from courses it is assigned to.</b-form-invalid-feedback>
+      <b-form-invalid-feedback :state="state" class="mt-3">This action cannot be Un-done.</b-form-invalid-feedback>
+
+      <b-form-checkbox-group v-model="value" class="mt-3" :options="confirmDelete" :state="state" name="checkbox-validation">
+
+        <b-form-valid-feedback :state="state">
+          <b-button class="mt-5 btn btn-danger" block @click="deleteEnrolment()">Delete</b-button>
+        </b-form-valid-feedback>
+      </b-form-checkbox-group>
+
     </b-col>
 
   </b-modal>
@@ -167,7 +178,18 @@ export default {
   components: {},
   data() {
     return {
-      enrolment: []
+      enrolment: [],
+      value: [],
+
+      confirmDelete: [{
+          text: 'I Understand',
+          value: 'first'
+        }]
+    }
+  },
+  computed: {
+    state() {
+      return this.value.length === 1
     }
   },
   mounted() {
@@ -189,12 +211,19 @@ export default {
         this.$notify({
           group: 'foo',
           title: 'Important message',
+          type: 'success',
           text: 'Enrolment Loaded'
         });
       })
       .catch(error => {
         console.log(error)
         console.log(error.response.data)
+        this.$notify({
+          group: 'foo',
+          title: 'Error',
+          type: 'error',
+          text: 'Something Went Wrong.'
+        });
       })
 
 
@@ -235,11 +264,32 @@ export default {
           this.$router.push({
             name: 'enrolments_index'
           });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Enrolment deleted Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
+
+            }
+          });
         })
         .catch(error => {
+
           console.log(error)
           console.log(error.response.data)
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong. Enrolment not deleted'
+          });
+
         })
+
+
 
     },
 

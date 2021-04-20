@@ -1,6 +1,6 @@
 /**
  * @Date:   2021-03-30T22:12:06+01:00
- * @Last modified time: 2021-04-18T19:49:17+01:00
+ * @Last modified time: 2021-04-20T18:33:04+01:00
  */
 import Vue from 'vue'
 
@@ -13,20 +13,20 @@ import Login from './views/HomeLogin'
 import Profile from './views/Profile'
 import Register from './views/Register'
 
-import CoursesIndex from './views/Courses/Index'
-import CoursesShow from './views/Courses/Show'
-import CoursesCreate from './views/Courses/Create'
-import CoursesEdit from './views/Courses/Edit'
+import CoursesIndex from './views/courses/Index'
+import CoursesShow from './views/courses/Show'
+import CoursesCreate from './views/courses/Create'
+import CoursesEdit from './views/courses/Edit'
 
-import LecturersIndex from './views/Lecturers/Index'
-import LecturersShow from './views/Lecturers/Show'
-import LecturersCreate from './views/Lecturers/Create'
-import LecturersEdit from './views/Lecturers/Edit'
+import LecturersIndex from './views/lecturers/Index'
+import LecturersShow from './views/lecturers/Show'
+import LecturersCreate from './views/lecturers/Create'
+import LecturersEdit from './views/lecturers/Edit'
 
-import EnrolmentsIndex from './views/Enrolments/Index'
-import EnrolmentsShow from './views/Enrolments/Show'
-import EnrolmentsCreate from './views/Enrolments/Create'
-import EnrolmentsEdit from './views/Enrolments/Edit'
+import EnrolmentsIndex from './views/enrolments/Index'
+import EnrolmentsShow from './views/enrolments/Show'
+import EnrolmentsCreate from './views/enrolments/Create'
+import EnrolmentsEdit from './views/enrolments/Edit'
 // import CoursesShow from './views/Courses/show'
 // import CoursesEdit from './views/Courses/edit'
 
@@ -74,15 +74,16 @@ export default new Router({
       name: 'courses_index',
       component: CoursesIndex
     },
-    {
-      path: '/courses/:id',
-      name: 'courses_show',
-      component: CoursesShow
-    },
+
     {
       path: '/courses/create',
       name: 'courses_create',
       component: CoursesCreate
+    },
+    {
+      path: '/courses/:id',
+      name: 'courses_show',
+      component: CoursesShow
     },
     {
       path: '/courses/edit/:id',
@@ -94,15 +95,16 @@ export default new Router({
       name: 'lecturers_index',
       component: LecturersIndex
     },
-    {
-      path: '/lecturers/:id',
-      name: 'lecturers_show',
-      component: LecturersShow
-    },
+
     {
       path: '/lecturers/create',
       name: 'lecturers_create',
       component: LecturersCreate
+    },
+    {
+      path: '/lecturers/:id',
+      name: 'lecturers_show',
+      component: LecturersShow
     },
     {
       path: '/lecturers/edit/:id',
@@ -115,36 +117,20 @@ export default new Router({
       component: EnrolmentsIndex
     },
     {
-      path: '/enrolments/:id',
-      name: 'enrolments_show',
-      component: EnrolmentsShow
-    },
-    {
       path: '/enrolments/create',
       name: 'enrolments_create',
       component: EnrolmentsCreate
+    },
+    {
+      path: '/enrolments/:id',
+      name: 'enrolments_show',
+      component: EnrolmentsShow
     },
     {
       path: '/enrolments/edit/:id',
       name: 'enrolments_edit',
       component: EnrolmentsEdit
     },
-    // {
-    //   path: '/courses/show',
-    //   name: 'courses_show',
-    //   component: CoursesShow
-    // },
-    // {
-    //   path: '/courses/edit ',
-    //   name: 'courses_edit',
-    //   component: CoursesEdit
-    // },
-    // {
-    //   path: '/testing/:id',
-    //   // path: '/testing/:myparam/:second',
-    //   name: 'testing',
-    //   component: Testing
-    // },
 
   ]
 

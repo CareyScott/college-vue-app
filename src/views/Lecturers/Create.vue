@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-04-13T12:02:51+01:00
-@Last modified time: 2021-04-17T20:40:37+01:00
+@Last modified time: 2021-04-20T23:38:59+01:00
 -->
 
 
@@ -92,6 +92,17 @@ export default {
           this.$router.push({
             name: 'lecturers_index'
           });
+          this.$notify({
+            group: 'foo',
+            title: 'Important message',
+            text: 'Lecturer Created Successfully!',
+            type: 'success',
+            speed: 700,
+            data: {
+              width: 550,
+
+            }
+          });
 
 
         })
@@ -101,6 +112,12 @@ export default {
           if (error.response.data.errors) {
             this.errors = error.response.data.errors
           }
+          this.$notify({
+            group: 'foo',
+            title: 'Error',
+            type: 'error',
+            text: 'Something Went Wrong.'
+          });
         })
     }
   },

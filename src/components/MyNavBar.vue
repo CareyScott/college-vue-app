@@ -1,6 +1,6 @@
 <!--
 @Date:   2021-03-30T22:34:26+01:00
-@Last modified time: 2021-04-19T13:55:33+01:00
+@Last modified time: 2021-04-20T23:03:07+01:00
 -->
 
 
@@ -14,7 +14,7 @@
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
+    <b-collapse id="nav-collapse" is-nav v-on:login="setLoggedIn">
 
       <!-- LEFT SIDE -->
       <b-navbar-nav v-if="loggedIn" class="mt-3 ml-4">
@@ -32,59 +32,12 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <!-- <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"  v-model="term"></b-form-input>
-
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form> -->
-
-        <!-- <b-nav-item-dropdown text="Lang" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown> -->
         <b-button v-if="loggedIn" class="btn-dark" @click="logout()"> Logout </b-button>
         <b-button v-else class="btn-dark">
           <router-link class=" text-light" :to="{name: 'home'}">Login</router-link>
         </b-button>
 
-        <!-- <b-nav-item-dropdown right>
-          <template #button-content>
-            {{user}}
-            user
-          </template>
-          <div v-if="loggedIn">
-            <b-dropdown-item lass="float-right" variant="danger" @click="logout()">
-             Logout
-          </b-dropdown-item>
-          </div>
-          <div v-else>
-            <b-dropdown-item href="#">
-              <router-link class="btn  ml-1" :to="{name: 'home'}">Login</router-link>
-            </b-dropdown-item>
-            <b-dropdown-item href="#">
-              <router-link class="btn  ml-1" :to="{name: 'register'}">Register</router-link>
-            </b-dropdown-item>
-            <b-dropdown-item href="#">
-              <router-link class="btn  ml-1" :to="{name: 'profile'}">Profile</router-link>
-            </b-dropdown-item>
-          </div>
-
-
-        </b-nav-item-dropdown> -->
       </b-navbar-nav>
-
-
-
-      <!-- <div v-if="loggedIn">
-        <router-link class="btn btn-info ml-1" :to="{name: 'home'}">Login</router-link>
-        <router-link class="btn btn-info ml-1" :to="{name: 'register'}">Register</router-link>
-      </div>
-      <div v-else>
-        <b-button class="float-right" variant="danger" @click="logout()">Logout</b-button>
-      </div> -->
-      <!-- <b-nav-item to ="/courses/create">Create</b-nav-item> -->
 
     </b-collapse>
   </b-navbar>
